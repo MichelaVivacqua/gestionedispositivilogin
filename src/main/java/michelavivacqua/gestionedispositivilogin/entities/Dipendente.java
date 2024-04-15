@@ -22,6 +22,7 @@ public class Dipendente {
     private String surname;
     private String email;
     private String propic;
+    private String password;
     @JsonIgnore
     @OneToMany(mappedBy = "dipendente")
     private List<Dispositivo> dispositivi;

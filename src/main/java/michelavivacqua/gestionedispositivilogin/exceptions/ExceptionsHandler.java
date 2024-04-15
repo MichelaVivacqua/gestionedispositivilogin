@@ -1,6 +1,7 @@
 package michelavivacqua.gestionedispositivilogin.exceptions;
 
 import michelavivacqua.gestionedispositivilogin.payloads.ErrorsPayload;
+import michelavivacqua.gestionedispositivilogin.payloads.ErrorsResponseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -27,5 +28,12 @@ public class ExceptionsHandler {
     public ErrorsPayload handleGenericErrors(Exception ex){
         ex.printStackTrace(); // per tenere traccia di cosa ha causato l'errore
         return new ErrorsPayload("Problema lato server! Giuro che lo risolveremo presto! (Scherzo rimarrà così)", LocalDateTime.now());
+    }
+
+    @ExceptionHandler(UnauthorizedException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED) // 401
+    // Con questa annotazione indico che questo metodo dovrà gestire le eccezioni di tipo NotFoundException
+    public ErrorsResponseDTO handleUnauthorized(UnauthorizedException ex){
+        return new ErrorsResponseDTO(ex.getMessage(), LocalDateTime.now());
     }
 }

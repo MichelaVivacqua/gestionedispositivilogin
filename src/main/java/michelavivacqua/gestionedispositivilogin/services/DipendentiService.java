@@ -82,4 +82,8 @@ public class DipendentiService {
         return this.dipendentiDAO.findAll(pageable);
     }
 
+    public Dipendente findByEmail(String email) {
+        return dipendentiDAO.findByEmail(email).orElseThrow(() -> new NotFoundException("Utente con email " + email + " non trovato!"));
+    }
+
 }
