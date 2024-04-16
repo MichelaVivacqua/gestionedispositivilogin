@@ -20,6 +20,8 @@ public record NewDipendenteDTO(
         String email,
         @NotEmpty(message = "L'avatar è obbligatorio")
         @URL(message="L'URL inserito non è valido")
-        String propic
+        String propic,
+        @NotEmpty(message = "La password è obbligatoria")
+        String password
 ) {
 }

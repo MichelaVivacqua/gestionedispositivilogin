@@ -27,11 +27,12 @@ public class Dipendente {
     @OneToMany(mappedBy = "dipendente")
     private List<Dispositivo> dispositivi;
 
-    public Dipendente(String username, String name, String surname, String email, String propic) {
+    public Dipendente(String username, String name, String surname, String email, String propic, String password) {
         this.username = username;
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.propic = propic;
+        this.password=password;
     }
 }
